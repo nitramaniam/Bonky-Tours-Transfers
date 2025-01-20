@@ -1,3 +1,47 @@
+emailjs.init({
+    publicKey: 'YOUR_PUBLIC_KEY',
+});
+
+
+document.getElementById('contactForm').addEventListener('submit', function (event) {
+    e.preventDefault();
+
+    const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+
+    // Using EmailJS - Make sure to include their SDK and configure your account
+    // Add this in your HTML: <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', data)
+        .then(function () {
+            alert('Email sent successfully!');
+            document.getElementById('emailForm').reset();
+        }, function (error) {
+            document.getElementById('errorMessage').style.display = 'block';
+            document.getElementById('errorMessage').textContent = 'Failed to send email: ' + error.text;
+        });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // script.js
 
 document.getElementById('contactForm').addEventListener('submit', function (event) {
@@ -32,6 +76,27 @@ function validateEmail(email) {
 // script.js
 
 document.getElementById('contactForm').addEventListener('submit', function (event) {
+    e.preventDefault();
+
+    const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+
+    // Using EmailJS - Make sure to include their SDK and configure your account
+    // Add this in your HTML: <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', data)
+        .then(function () {
+            alert('Email sent successfully!');
+            document.getElementById('emailForm').reset();
+        }, function (error) {
+            document.getElementById('errorMessage').style.display = 'block';
+            document.getElementById('errorMessage').textContent = 'Failed to send email: ' + error.text;
+        });
+
+
     event.preventDefault(); // Prevent default form submission
 
     // Collect form data
@@ -60,7 +125,7 @@ document.getElementById('contactForm').addEventListener('submit', function (even
 
 function sendEmail(e) {
     e.preventDefault();
-    
+
     const data = {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
@@ -71,10 +136,10 @@ function sendEmail(e) {
     // Using EmailJS - Make sure to include their SDK and configure your account
     // Add this in your HTML: <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', data)
-        .then(function() {
+        .then(function () {
             alert('Email sent successfully!');
             document.getElementById('emailForm').reset();
-        }, function(error) {
+        }, function (error) {
             document.getElementById('errorMessage').style.display = 'block';
             document.getElementById('errorMessage').textContent = 'Failed to send email: ' + error.text;
         });
